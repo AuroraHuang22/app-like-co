@@ -79,15 +79,16 @@
       'max-w-[960px]',
       'mx-auto',
       'px-[8px]',
+      'py-[24px]',
       'lg:px-0',
     ]"
   >
     <IscnEditBar
+      class="ml-auto"
       :is-iscn-owner="isIscnOwner"
       :iscn-id="iscnId"
       :is-show-mint-button="isShowMintButton"
       :is-nft-book="isNFTBook"
-      :mint-queries="mintQueries"
       :class-id="classId"
       :likerland-nft-url="likerlandNftUrl"
       :should-show-mint-button="isShowMintButton"

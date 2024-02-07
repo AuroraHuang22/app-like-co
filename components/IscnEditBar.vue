@@ -2,12 +2,9 @@
   <div
     :class="[
       'flex',
-      'justify-end',
+      'justify-center',
       'items-center',
-      'w-full',
-      'pt-[24px]',
       'gap-[8px]',
-      'lg:pt-0',
     ]"
   >
     <div
@@ -22,6 +19,7 @@
       <div class="h-[20px] w-[2px] bg-medium-gray" />
     </div>
     <Button
+      class="flex flex-shrink-0"
       preset="tertiary"
       :text="$t('NFTPortal.button.download.iscn')"
       @click="handleClickDownload"
@@ -35,7 +33,7 @@
       preset="secondary"
       class="w-full lg:w-auto"
       :text="$t('NFTPortal.button.mint.book')"
-      @click="clickMintNFTBook"
+      @click="handleClickMintNFTBook"
     />
     <Button
       v-if="isShowMintButton && !isNftBook"
@@ -77,9 +75,12 @@ export default class IscnEditBar extends Vue {
   @Prop({ default: false }) readonly isShowMintButton!: boolean
   @Prop({ default: false }) readonly isNftBook!: boolean
   @Prop(String) readonly iscnId: string | undefined
-  @Prop({ default: null }) readonly mintQueries!: any | null
   @Prop(String) readonly classId!: string
   @Prop(String) readonly likerlandNftUrl!: string
+
+   get mintQueries() {
+    return this.$route.query;
+  }
 
   handleClickDownload() {
     this.$emit('click-download', this.iscnId)
